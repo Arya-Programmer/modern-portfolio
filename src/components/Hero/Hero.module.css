@@ -6,16 +6,6 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.light {
-    background-color: #ffffff;
-    color: #333333;
-}
-
-.dark {
-    background-color: #121212;
-    color: #f5f5f5;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -35,14 +25,6 @@
 .highlight {
     position: relative;
     display: inline-block;
-}
-
-.light .highlight {
-    color: #0070f3;
-}
-
-.dark .highlight {
-    color: #3291ff;
 }
 
 .subtitle {
@@ -77,13 +59,10 @@
 }
 
 .primaryButton {
-    background-color: #0070f3;
-    color: white;
     border: none;
 }
 
 .primaryButton:hover {
-    background-color: #0060df;
     transform: translateY(-2px);
 }
 
@@ -92,23 +71,7 @@
     border: 1px solid;
 }
 
-.light .secondaryButton {
-    color: #333333;
-    border-color: #333333;
-}
-
-.dark .secondaryButton {
-    color: #f5f5f5;
-    border-color: #f5f5f5;
-}
-
-.light .secondaryButton:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    transform: translateY(-2px);
-}
-
-.dark .secondaryButton:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+.secondaryButton:hover {
     transform: translateY(-2px);
 }
 
@@ -118,14 +81,6 @@
     border: none;
     cursor: pointer;
     animation: bounce 2s infinite;
-}
-
-.light .scrollDown {
-    color: #333333;
-}
-
-.dark .scrollDown {
-    color: #f5f5f5;
 }
 
 @keyframes bounce {
@@ -172,14 +127,6 @@
     background-position: center;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border: 5px solid;
-}
-
-.light .profileImage {
-    border-color: #ffffff;
-}
-
-.dark .profileImage {
-    border-color: #2a2a2a;
 }
 
 @media (max-width: 768px) {
