@@ -1,0 +1,224 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.dark {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.highlight {
+    position: relative;
+    display: inline-block;
+}
+
+.light .highlight {
+    color: #0070f3;
+}
+
+.dark .highlight {
+    color: #3291ff;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.description {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.primaryButton,
+.secondaryButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primaryButton {
+    background-color: #0070f3;
+    color: white;
+    border: none;
+}
+
+.primaryButton:hover {
+    background-color: #0060df;
+    transform: translateY(-2px);
+}
+
+.secondaryButton {
+    background-color: transparent;
+    border: 1px solid;
+}
+
+.light .secondaryButton {
+    color: #333333;
+    border-color: #333333;
+}
+
+.dark .secondaryButton {
+    color: #f5f5f5;
+    border-color: #f5f5f5;
+}
+
+.light .secondaryButton:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+.dark .secondaryButton:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.scrollDown {
+    align-self: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.light .scrollDown {
+    color: #333333;
+}
+
+.dark .scrollDown {
+    color: #f5f5f5;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.heroContent {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.textContent {
+    flex: 1;
+}
+
+.imageWrapper {
+    flex-shrink: 0;
+}
+
+.profileImage {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-image: url("https://via.placeholder.com/250");
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 5px solid;
+}
+
+.light .profileImage {
+    border-color: #ffffff;
+}
+
+.dark .profileImage {
+    border-color: #2a2a2a;
+}
+
+@media (max-width: 768px) {
+    .heroContent {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+
+    .imageWrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .profileImage {
+        width: 180px;
+        height: 180px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.25rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,192 @@
+.contact {
+    padding: 6rem 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.dark {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+}
+
+.title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+}
+
+.light .title::after {
+    background-color: #0070f3;
+}
+
+.dark .title::after {
+    background-color: #3291ff;
+}
+
+.contactContent {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contactItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contactIcon {
+    padding: 0.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.light .contactIcon {
+    background-color: #f0f0f0;
+    color: #0070f3;
+}
+
+.dark .contactIcon {
+    background-color: #333333;
+    color: #3291ff;
+}
+
+.contactItem h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+}
+
+.contactItem p {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.light .contactItem p {
+    color: #666666;
+}
+
+.dark .contactItem p {
+    color: #bbbbbb;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formControl {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light .formControl {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    color: #333333;
+}
+
+.dark .formControl {
+    background-color: #222222;
+    border: 1px solid #444444;
+    color: #f5f5f5;
+}
+
+.light .formControl:focus {
+    border-color: #0070f3;
+    box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.2);
+    outline: none;
+}
+
+.dark .formControl:focus {
+    border-color: #3291ff;
+    box-shadow: 0 0 0 2px rgba(50, 145, 255, 0.2);
+    outline: none;
+}
+
+.submitButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    align-self: flex-start;
+}
+
+.light .submitButton {
+    background-color: #0070f3;
+    color: white;
+}
+
+.dark .submitButton {
+    background-color: #3291ff;
+    color: white;
+}
+
+.light .submitButton:hover {
+    background-color: #0060df;
+    transform: translateY(-2px);
+}
+
+.dark .submitButton:hover {
+    background-color: #2280e8;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .contactContent {
+        grid-template-columns: 1fr;
+    }
+
+    .contactInfo {
+        margin-bottom: 2rem;
+    }
+
+    .submitButton {
+        width: 100%;
+    }
+}
