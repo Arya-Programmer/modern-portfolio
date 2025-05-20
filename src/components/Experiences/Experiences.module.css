@@ -3,16 +3,6 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.light {
-    background-color: #f9f9f9;
-    color: #333333;
-}
-
-.dark {
-    background-color: #1a1a1a;
-    color: #f5f5f5;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -37,12 +27,13 @@
     height: 3px;
 }
 
-.light .title::after {
-    background-color: #0070f3;
-}
-
-.dark .title::after {
-    background-color: #3291ff;
+.titleAfter {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
 }
 
 .timeline {
@@ -73,16 +64,6 @@
     margin-right: 2rem;
 }
 
-.light .logoContainer {
-    background-color: #ffffff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.dark .logoContainer {
-    background-color: #2a2a2a;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
 .logo {
     width: 60%;
     height: 60%;
@@ -95,18 +76,6 @@
     border-radius: 8px;
     position: relative;
     border-left: 2px solid;
-}
-
-.light .content {
-    background-color: #ffffff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    border-left-color: #e0e0e0;
-}
-
-.dark .content {
-    background-color: #222222;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    border-left-color: #444444;
 }
 
 .role {
@@ -129,26 +98,10 @@
     font-size: 0.9rem;
 }
 
-.light .period {
-    color: #666666;
-}
-
-.dark .period {
-    color: #aaaaaa;
-}
-
 .description {
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
-}
-
-.light .description {
-    color: #555555;
-}
-
-.dark .description {
-    color: #cccccc;
 }
 
 @media (max-width: 768px) {
