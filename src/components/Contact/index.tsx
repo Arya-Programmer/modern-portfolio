@@ -6,7 +6,7 @@ import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Contact.module.css"
 
 export default function Contact() {
-    const { theme } = useContext(ThemeContext)
+    const { colors } = useContext(ThemeContext)
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -32,31 +32,72 @@ export default function Contact() {
         })
     }
 
+    const sectionStyle = {
+        backgroundColor: colors.backgroundAlt,
+        color: colors.text,
+    }
+
+    const titleAfterStyle = {
+        backgroundColor: colors.primary,
+    }
+
+    const contactIconStyle = {
+        backgroundColor: colors.backgroundElevated,
+        color: colors.primary,
+    }
+
+    const contactItemTextStyle = {
+        color: colors.textMuted,
+    }
+
+    const formControlStyle = {
+        backgroundColor: colors.formBackground,
+        borderColor: colors.formBorder,
+        color: colors.text,
+    }
+
+    const formControlFocusStyle = {
+        borderColor: colors.primary,
+        boxShadow: `0 0 0 2px ${colors.primary}20`,
+    }
+
+    const submitButtonStyle = {
+        backgroundColor: colors.primary,
+        color: "#ffffff",
+    }
+
+    const submitButtonHoverStyle = {
+        backgroundColor: colors.primaryHover,
+    }
+
     return (
-        <section id="contact" className={`${styles.contact} ${theme === "dark" ? styles.dark : styles.light}`}>
+        <section id="contact" className={styles.contact} style={sectionStyle}>
             <div className={styles.container}>
-                <h2 className={styles.title}>Contact Me</h2>
+                <h2 className={styles.title}>
+                    Contact Me
+                    <span className={styles.titleAfter} style={titleAfterStyle}></span>
+                </h2>
                 <div className={styles.contactContent}>
                     <div className={styles.contactInfo}>
                         <div className={styles.contactItem}>
-                            <Mail className={styles.contactIcon} />
+                            <Mail className={styles.contactIcon} style={contactIconStyle} />
                             <div>
                                 <h3>Email</h3>
-                                <p>your.email@example.com</p>
+                                <p style={contactItemTextStyle}>your.email@example.com</p>
                             </div>
                         </div>
                         <div className={styles.contactItem}>
-                            <Phone className={styles.contactIcon} />
+                            <Phone className={styles.contactIcon} style={contactIconStyle} />
                             <div>
                                 <h3>Phone</h3>
-                                <p>+1 (123) 456-7890</p>
+                                <p style={contactItemTextStyle}>+1 (123) 456-7890</p>
                             </div>
                         </div>
                         <div className={styles.contactItem}>
-                            <MapPin className={styles.contactIcon} />
+                            <MapPin className={styles.contactIcon} style={contactIconStyle} />
                             <div>
                                 <h3>Location</h3>
-                                <p>San Francisco, CA</p>
+                                <p style={contactItemTextStyle}>San Francisco, CA</p>
                             </div>
                         </div>
                     </div>
@@ -70,6 +111,14 @@ export default function Contact() {
                                 onChange={handleChange}
                                 required
                                 className={styles.formControl}
+                                style={formControlStyle}
+                                onFocus={(e) => {
+                                    Object.assign(e.currentTarget.style, formControlFocusStyle)
+                                }}
+                                onBlur={(e) => {
+                                    e.currentTarget.style.borderColor = colors.formBorder
+                                    e.currentTarget.style.boxShadow = "none"
+                                }}
                             />
                         </div>
                         <div className={styles.formGroup}>
@@ -81,6 +130,14 @@ export default function Contact() {
                                 onChange={handleChange}
                                 required
                                 className={styles.formControl}
+                                style={formControlStyle}
+                                onFocus={(e) => {
+                                    Object.assign(e.currentTarget.style, formControlFocusStyle)
+                                }}
+                                onBlur={(e) => {
+                                    e.currentTarget.style.borderColor = colors.formBorder
+                                    e.currentTarget.style.boxShadow = "none"
+                                }}
                             />
                         </div>
                         <div className={styles.formGroup}>
@@ -92,6 +149,14 @@ export default function Contact() {
                                 onChange={handleChange}
                                 required
                                 className={styles.formControl}
+                                style={formControlStyle}
+                                onFocus={(e) => {
+                                    Object.assign(e.currentTarget.style, formControlFocusStyle)
+                                }}
+                                onBlur={(e) => {
+                                    e.currentTarget.style.borderColor = colors.formBorder
+                                    e.currentTarget.style.boxShadow = "none"
+                                }}
                             />
                         </div>
                         <div className={styles.formGroup}>
@@ -102,10 +167,28 @@ export default function Contact() {
                                 onChange={handleChange}
                                 required
                                 className={styles.formControl}
+                                style={formControlStyle}
                                 rows={5}
+                                onFocus={(e) => {
+                                    Object.assign(e.currentTarget.style, formControlFocusStyle)
+                                }}
+                                onBlur={(e) => {
+                                    e.currentTarget.style.borderColor = colors.formBorder
+                                    e.currentTarget.style.boxShadow = "none"
+                                }}
                             />
                         </div>
-                        <button type="submit" className={styles.submitButton}>
+                        <button
+                            type="submit"
+                            className={styles.submitButton}
+                            style={submitButtonStyle}
+                            onMouseOver={(e) => {
+                                Object.assign(e.currentTarget.style, submitButtonHoverStyle)
+                            }}
+                            onMouseOut={(e) => {
+                                e.currentTarget.style.backgroundColor = colors.primary
+                            }}
+                        >
                             <Send size={16} />
                             <span>Send Message</span>
                         </button>
