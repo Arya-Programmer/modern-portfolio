@@ -1,4 +1,3 @@
-
 // Theme color variables
 
 export const lightTheme = {

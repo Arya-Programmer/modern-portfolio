@@ -115,18 +115,24 @@
 }
 
 .imageWrapper {
-    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 300px;
+    height: 420px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 5px solid;
+    overflow: hidden;
 }
 
 .profileImage {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background-image: url("https://via.placeholder.com/250");
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 5px solid;
+    width: 700px;
+    height: auto;
+    position: relative;
+    top: 75px;
+    right: 75px;
 }
 
 @media (max-width: 768px) {

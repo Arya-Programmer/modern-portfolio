@@ -1,16 +1,16 @@
 import { useContext } from "react"
 import { Routes, Route } from "react-router-dom"
 
-import Header from "./components/Header"
-import Hero from "./components/Hero"
-import Skills from "./components/Skills"
-import Experiences from "./components/Experiences"
-import Projects from "./components/Projects"
-import About from "./components/About"
-import Contact from "./components/Contact"
-import Footer from "./components/Footer"
+import Header from "@components/Header"
+import Hero from "@components/Hero"
+import Skills from "@components/Skills"
+import Experiences from "@components/Experiences"
+import Projects from "@components/Projects"
+import About from "@components/About"
+import Contact from "@components/Contact"
+import Footer from "@components/Footer"
 
-import { ThemeContext } from "./context/ThemeContext"
+import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./App.module.css"
 
 function HomePage() {

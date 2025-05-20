@@ -43,7 +43,7 @@ export default function Hero() {
         color: colors.text,
     }
 
-    const profileImageStyle = {
+    const profileImageWrapperStyle = {
         borderColor: colors.backgroundElevated,
     }
 
@@ -58,7 +58,7 @@ export default function Hero() {
                                 Arya
                             </span>
                         </h1>
-                        <h2 className={styles.subtitle}>Frontend Developer</h2>
+                        <h2 className={styles.subtitle}>Developer</h2>
                         <p className={styles.description}>I build exceptional and accessible digital experiences across platforms.</p>
                         <div className={styles.actions}>
                             <button
@@ -83,8 +83,8 @@ export default function Hero() {
                             </button>
                         </div>
                     </div>
-                    <div className={styles.imageWrapper}>
-                        <div className={styles.profileImage} style={profileImageStyle} />
+                    <div className={styles.imageWrapper} style={profileImageWrapperStyle}>
+                        <img className={styles.profileImage} src="/snapshot.jpg" />
                     </div>
                 </div>
                 <button
