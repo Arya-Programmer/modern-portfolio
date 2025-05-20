@@ -1,8 +1,8 @@
-"use client"
-
 import { useContext } from "react"
+
 import { Github, Linkedin, Twitter } from "lucide-react"
-import { ThemeContext } from "../../context/ThemeContext"
+
+import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Footer.module.css"
 
 export default function Footer() {

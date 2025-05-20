@@ -1,8 +1,8 @@
-"use client"
-
 import { useState, useContext, type ChangeEvent, type FormEvent } from "react"
+
 import { Mail, Phone, MapPin, Send } from "lucide-react"
-import { ThemeContext } from "../../context/ThemeContext"
+
+import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Contact.module.css"
 
 export default function Contact() {

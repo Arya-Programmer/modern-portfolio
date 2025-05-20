@@ -1,10 +1,11 @@
-"use client"
-
 import { useState, useEffect, useContext } from "react"
+
 import { Menu, X } from "lucide-react"
+
 import { ThemeToggle } from "../ThemeToggle"
-import { ThemeContext } from "../../context/ThemeContext"
-import { useMobile } from "../../hooks/useMobile"
+import { useMobile } from "@hooks/useMobile"
+
+import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Header.module.css"
 
 export default function Header() {

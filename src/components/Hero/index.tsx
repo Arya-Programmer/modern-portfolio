@@ -1,8 +1,8 @@
-"use client"
-
 import { useContext } from "react"
+
 import { ArrowDown } from "lucide-react"
-import { ThemeContext } from "../../context/ThemeContext"
+
+import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Hero.module.css"
 
 export default function Hero() {
