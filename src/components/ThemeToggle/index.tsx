@@ -6,11 +6,15 @@ import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./ThemeToggle.module.css"
 
 export function ThemeToggle() {
-    const { theme, setTheme } = useContext(ThemeContext)
+    const { theme, colors, setTheme } = useContext(ThemeContext)
 
     return (
         <button
-            className={`${styles.themeToggle} ${theme === "dark" ? styles.dark : styles.light}`}
+            className={styles.themeToggle}
+            style={{
+                backgroundColor: theme === "dark" ? colors.backgroundElevated : colors.backgroundElevated,
+                color: colors.text,
+            }}
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             aria-label="Toggle theme"
         >

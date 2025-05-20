@@ -8,18 +8,6 @@
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.light {
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.dark {
-    background-color: rgba(18, 18, 18, 0.9);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -35,14 +23,6 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 1.5rem;
-}
-
-.light .logo {
-    color: #333333;
-}
-
-.dark .logo {
-    color: #f5f5f5;
 }
 
 .nav {
@@ -63,27 +43,6 @@
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
-}
-
-.light .navLink {
-    color: #555555;
-}
-
-.dark .navLink {
-    color: #cccccc;
-}
-
-.light .navLink:hover,
-.light .navLink.active {
-    color: #000000;
-}
-
-.dark .navLink:hover,
-.dark .navLink.active {
-    color: #ffffff;
-}
-
-.navLink.active {
     position: relative;
 }
 
@@ -106,14 +65,6 @@
     padding: 0.5rem;
 }
 
-.light .menuButton {
-    color: #333333;
-}
-
-.dark .menuButton {
-    color: #f5f5f5;
-}
-
 .mobileMenu {
     position: absolute;
     top: 100%;
@@ -121,16 +72,6 @@
     right: 0;
     padding: 1rem 1.5rem;
     transition: background-color 0.3s ease;
-}
-
-.light .mobileMenu {
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.dark .mobileMenu {
-    background-color: rgba(18, 18, 18, 0.95);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .mobileNavList {
@@ -145,24 +86,6 @@
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
-}
-
-.light .mobileNavLink {
-    color: #555555;
-}
-
-.dark .mobileNavLink {
-    color: #cccccc;
-}
-
-.light .mobileNavLink:hover,
-.light .mobileNavLink.active {
-    color: #000000;
-}
-
-.dark .mobileNavLink:hover,
-.dark .mobileNavLink.active {
-    color: #ffffff;
 }
 
 .mobileThemeToggle {

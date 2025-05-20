@@ -3,16 +3,6 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.light {
-    background-color: #ffffff;
-    color: #333333;
-}
-
-.dark {
-    background-color: #121212;
-    color: #f5f5f5;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -37,12 +27,13 @@
     height: 3px;
 }
 
-.light .title::after {
-    background-color: #0070f3;
-}
-
-.dark .title::after {
-    background-color: #3291ff;
+.titleAfter {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
 }
 
 .skillsGrid {
@@ -58,28 +49,4 @@
     font-weight: 500;
     font-size: 1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.light .skillChip {
-    background-color: #f0f0f0;
-    color: #333333;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.dark .skillChip {
-    background-color: #2a2a2a;
-    color: #f5f5f5;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.skillChip:hover {
-    transform: translateY(-3px);
-}
-
-.light .skillChip:hover {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.dark .skillChip:hover {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
