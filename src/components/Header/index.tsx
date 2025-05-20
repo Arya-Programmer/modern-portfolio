@@ -9,7 +9,7 @@ import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Header.module.css"
 
 export default function Header() {
-    const { theme } = useContext(ThemeContext)
+    const { colors } = useContext(ThemeContext)
     const isMobile = useMobile()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [activeSection, setActiveSection] = useState("home")
@@ -53,15 +53,42 @@ export default function Header() {
         }
     }, [])
 
+    const headerStyle = {
+        backgroundColor: colors.background + "E6", // Adding transparency
+        backdropFilter: "blur(10px)",
+        boxShadow: `0 2px 10px ${colors.shadow}`,
+    }
+
+    const logoStyle = {
+        color: colors.text,
+    }
+
+    const navLinkStyle = {
+        color: colors.textDimmed,
+    }
+
+    const activeNavLinkStyle = {
+        color: colors.text,
+    }
+
+    const menuButtonStyle = {
+        color: colors.text,
+    }
+
+    const mobileMenuStyle = {
+        backgroundColor: colors.background + "F2", // More opacity for mobile menu
+        boxShadow: `0 4px 10px ${colors.shadow}`,
+    }
+
     return (
-        <header className={`${styles.header} ${theme === "dark" ? styles.dark : styles.light}`}>
+        <header className={styles.header} style={headerStyle}>
             <div className={styles.container}>
-                <a href="#home" className={styles.logo} onClick={() => handleNavClick("home")}>
+                <a href="#home" className={styles.logo} style={logoStyle} onClick={() => handleNavClick("home")}>
                     <span className={styles.name}>Portfolio</span>
                 </a>
 
                 {isMobile ? (
-                    <button className={styles.menuButton} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <button className={styles.menuButton} style={menuButtonStyle} onClick={() => setIsMenuOpen(!isMenuOpen)}>
                         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 ) : (
@@ -70,7 +97,8 @@ export default function Header() {
                             <li>
                                 <a
                                     href="#home"
-                                    className={`${styles.navLink} ${activeSection === "home" ? styles.active : ""}`}
+                                    className={styles.navLink}
+                                    style={activeSection === "home" ? activeNavLinkStyle : navLinkStyle}
                                     onClick={(e) => {
                                         e.preventDefault()
                                         handleNavClick("home")
@@ -82,7 +110,8 @@ export default function Header() {
                             <li>
                                 <a
                                     href="#skills"
-                                    className={`${styles.navLink} ${activeSection === "skills" ? styles.active : ""}`}
+                                    className={styles.navLink}
+                                    style={activeSection === "skills" ? activeNavLinkStyle : navLinkStyle}
                                     onClick={(e) => {
                                         e.preventDefault()
                                         handleNavClick("skills")
@@ -94,7 +123,8 @@ export default function Header() {
                             <li>
                                 <a
                                     href="#experiences"
-                                    className={`${styles.navLink} ${activeSection === "experiences" ? styles.active : ""}`}
+                                    className={styles.navLink}
+                                    style={activeSection === "experiences" ? activeNavLinkStyle : navLinkStyle}
                                     onClick={(e) => {
                                         e.preventDefault()
                                         handleNavClick("experiences")
@@ -106,7 +136,8 @@ export default function Header() {
                             <li>
                                 <a
                                     href="#projects"
-                                    className={`${styles.navLink} ${activeSection === "projects" ? styles.active : ""}`}
+                                    className={styles.navLink}
+                                    style={activeSection === "projects" ? activeNavLinkStyle : navLinkStyle}
                                     onClick={(e) => {
                                         e.preventDefault()
                                         handleNavClick("projects")
@@ -118,7 +149,8 @@ export default function Header() {
                             <li>
                                 <a
                                     href="#contact"
-                                    className={`${styles.navLink} ${activeSection === "contact" ? styles.active : ""}`}
+                                    className={styles.navLink}
+                                    style={activeSection === "contact" ? activeNavLinkStyle : navLinkStyle}
                                     onClick={(e) => {
                                         e.preventDefault()
                                         handleNavClick("contact")
@@ -133,13 +165,14 @@ export default function Header() {
                 )}
 
                 {isMobile && isMenuOpen && (
-                    <div className={styles.mobileMenu}>
+                    <div className={styles.mobileMenu} style={mobileMenuStyle}>
                         <nav>
                             <ul className={styles.mobileNavList}>
                                 <li>
                                     <a
                                         href="#home"
-                                        className={`${styles.mobileNavLink} ${activeSection === "home" ? styles.active : ""}`}
+                                        className={styles.mobileNavLink}
+                                        style={activeSection === "home" ? activeNavLinkStyle : navLinkStyle}
                                         onClick={(e) => {
                                             e.preventDefault()
                                             handleNavClick("home")
@@ -151,7 +184,8 @@ export default function Header() {
                                 <li>
                                     <a
                                         href="#skills"
-                                        className={`${styles.mobileNavLink} ${activeSection === "skills" ? styles.active : ""}`}
+                                        className={styles.mobileNavLink}
+                                        style={activeSection === "skills" ? activeNavLinkStyle : navLinkStyle}
                                         onClick={(e) => {
                                             e.preventDefault()
                                             handleNavClick("skills")
@@ -163,7 +197,8 @@ export default function Header() {
                                 <li>
                                     <a
                                         href="#experiences"
-                                        className={`${styles.mobileNavLink} ${activeSection === "experiences" ? styles.active : ""}`}
+                                        className={styles.mobileNavLink}
+                                        style={activeSection === "experiences" ? activeNavLinkStyle : navLinkStyle}
                                         onClick={(e) => {
                                             e.preventDefault()
                                             handleNavClick("experiences")
@@ -175,7 +210,8 @@ export default function Header() {
                                 <li>
                                     <a
                                         href="#projects"
-                                        className={`${styles.mobileNavLink} ${activeSection === "projects" ? styles.active : ""}`}
+                                        className={styles.mobileNavLink}
+                                        style={activeSection === "projects" ? activeNavLinkStyle : navLinkStyle}
                                         onClick={(e) => {
                                             e.preventDefault()
                                             handleNavClick("projects")
@@ -187,7 +223,8 @@ export default function Header() {
                                 <li>
                                     <a
                                         href="#contact"
-                                        className={`${styles.mobileNavLink} ${activeSection === "contact" ? styles.active : ""}`}
+                                        className={styles.mobileNavLink}
+                                        style={activeSection === "contact" ? activeNavLinkStyle : navLinkStyle}
                                         onClick={(e) => {
                                             e.preventDefault()
                                             handleNavClick("contact")
