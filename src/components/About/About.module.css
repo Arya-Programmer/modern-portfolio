@@ -3,16 +3,6 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.light {
-    background-color: #f9f9f9;
-    color: #333333;
-}
-
-.dark {
-    background-color: #1a1a1a;
-    color: #f5f5f5;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -37,12 +27,13 @@
     height: 3px;
 }
 
-.light .title::after {
-    background-color: #0070f3;
-}
-
-.dark .title::after {
-    background-color: #3291ff;
+.titleAfter {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
 }
 
 .content {
@@ -55,14 +46,6 @@
     line-height: 1.8;
     font-size: 1.1rem;
     text-align: center;
-}
-
-.light .text p {
-    color: #555555;
-}
-
-.dark .text p {
-    color: #cccccc;
 }
 
 @media (max-width: 768px) {
