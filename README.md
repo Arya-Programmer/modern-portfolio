@@ -1,46 +1,121 @@
-# Getting Started with Create React App
+# Modern Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive personal portfolio built with **React (TypeScript)** and powered by a **Django REST API**. Designed to showcase your work, skills, and contact information in a clean, dynamic, and scalable way.
 
-## Available Scripts
+## Preview
 
-In the project directory, you can run:
+Coming soon...
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Frontend
 
-### `npm test`
+* [React](https://reactjs.org/) with [TypeScript](https://www.typescriptlang.org/)
+* [React Router](https://reactrouter.com/) for navigation
+* [CSS Modules](https://github.com/css-modules/css-modules) for scoped styling
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend (separate repo)
 
-### `npm run build`
+* [Django](https://www.djangoproject.com/) with [Django REST Framework](https://www.django-rest-framework.org/)
+* CORS enabled for frontend connection
+* Repo: [modern-portfolio-backend](https://github.com/Arya-Programmer/modern-portfolio-backend)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Setup Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Clone the repo
 
-### `npm run eject`
+```bash
+git clone https://github.com/Arya-Programmer/modern-portfolio.git
+cd modern-portfolio
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 2. Install dependencies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 3. Run the development server
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+The app will run at:
+[http://localhost:3000](http://localhost:3000)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## API Configuration
+
+Make sure your Django backend is running at `http://localhost:8000/`.
+
+If needed, create an Axios config:
+
+```ts
+// src/api/axios.ts
+import axios from 'axios';
+
+export default axios.create({
+  baseURL: 'http://localhost:8000/api/',
+  withCredentials: true,
+});
+```
+
+---
+
+## Features
+
+* Project showcase fetched from the backend
+* Easy to customize and scale
+* Mobile-friendly and fully responsive
+* Clean folder structure and component-based architecture
+* Optional dark mode and animations
+* Contact form integration (coming soon)
+
+---
+
+## Folder Structure
+
+```
+/src
+  /api          # Axios or fetch config
+  /components   # Reusable UI components
+  /hooks        # Custom React hooks
+  /context      # React context providers and logic
+  /styles       # Global CSS
+```
+
+---
+
+## Deployment
+
+You can deploy this project using:
+
+* [Vercel](https://vercel.com/)
+* [Netlify](https://netlify.com/)
+* Or serve the React build via Django
+
+To build for production:
+
+```bash
+npm run build
+```
+
+---
+
+## Inspiration
+
+This project was inspired by modern developer portfolios and aims to combine backend flexibility with React's powerful UI layer.
+
+---
+
+## Contact
+
+Feel free to reach out or fork the project!
+
+> Built with care by [Arya](https://github.com/Arya-Programmer)
