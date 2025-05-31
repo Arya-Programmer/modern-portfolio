@@ -8,25 +8,39 @@ export default function Experiences() {
 
     const experiences = [
         {
-            company: "Company One",
-            role: "Senior Frontend Developer",
-            period: "2021 - Present",
-            description: "Led the development of the company's main product, improving performance by 40%.",
-            logo: "https://via.placeholder.com/80",
+            company: "2025 - Summer - Internship",
+            role: "Fullstack Developer - Internship",
+            period: "2025 - Spring",
+            description: "Built a website to show different economic data of Iraq",
+            logo: "/AUISLogo.png",
         },
         {
-            company: "Company Two",
-            role: "Frontend Developer",
-            period: "2019 - 2021",
-            description: "Worked on multiple client projects using React and Next.js.",
-            logo: "https://via.placeholder.com/80",
+            company: "2025 - Spring - Internship",
+            role: "IT Helpdesk - Internship",
+            period: "2025 - Spring",
+            description: "Taking a break from development world, helped in constant maintenance of IT Assets and Labs",
+            logo: "/AUISLogo.png",
         },
         {
-            company: "Company Three",
-            role: "Junior Developer",
-            period: "2017 - 2019",
-            description: "Started my career working on UI components and responsive layouts.",
-            logo: "https://via.placeholder.com/80",
+            company: "KurdsatTV",
+            role: "Fullstack Developer - Internship",
+            period: "2024 - Summer",
+            description: "Rebuilding their main website, making it more feature rich and user friendly",
+            logo: "/KurdsatLogo.jpg",
+        },
+        {
+            company: "Arya Stationery",
+            role: "Frontend Developer/Designer",
+            period: "2023 - Present",
+            description: "Created my own stationery, designed Textbooks for Teachers, and Applications to help 12th grade students",
+            logo: "/AryaStationeryLogo.jpg",
+        },
+        {
+            company: "Nova",
+            role: "Junior Backend Developer",
+            period: "2022 - 2023",
+            description: "Started my carrier by building Applications and Web solutions",
+            logo: "/NovaLogo.jpg",
         },
     ]
 
@@ -68,8 +82,8 @@ export default function Experiences() {
                 <div className={styles.timeline}>
                     {experiences.map((exp, index) => (
                         <div key={index} className={styles.timelineItem}>
-                            <div className={styles.logoContainer} style={logoContainerStyle}>
-                                <img src={exp.logo || "/placeholder.svg"} alt={`${exp.company} logo`} className={styles.logo} />
+                            <div >
+                                <img className={styles.logoContainer} style={logoContainerStyle} src={exp.logo || "/placeholder.svg"} alt={`${exp.company} logo`} />
                             </div>
                             <div className={styles.content} style={contentStyle}>
                                 <h3 className={styles.role}>{exp.role}</h3>

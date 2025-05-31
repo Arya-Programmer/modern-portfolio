@@ -29,9 +29,9 @@ export default function About() {
                 <div className={styles.content}>
                     <div className={styles.text}>
                         <p style={textStyle}>
-                            I'm a passionate frontend developer with a keen eye for creating elegant and functional user interfaces.
-                            With several years of experience in web development, I specialize in building responsive, accessible, and
-                            performant web applications using modern technologies like React and TypeScript.
+                            I'm a full-stack developer with a strong focus on backend systems.
+                            I build scalable, efficient server-side applications and clean, well-documented APIs.
+                            On the frontend, I use React and TypeScript to create responsive, accessible interfaces.
                         </p>
                         <p style={textStyle}>
                             When I'm not coding, you can find me exploring new hiking trails, reading science fiction, or

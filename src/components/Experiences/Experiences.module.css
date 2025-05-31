@@ -64,12 +64,6 @@
     margin-right: 2rem;
 }
 
-.logo {
-    width: 60%;
-    height: 60%;
-    object-fit: contain;
-}
-
 .content {
     flex: 1;
     padding: 1.5rem;

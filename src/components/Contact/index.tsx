@@ -80,24 +80,24 @@ export default function Contact() {
                 <div className={styles.contactContent}>
                     <div className={styles.contactInfo}>
                         <div className={styles.contactItem}>
-                            <Mail className={styles.contactIcon} style={contactIconStyle} />
+                            <Mail width="30" height="30" viewBox="-2 -2 28 28" className={styles.contactIcon} style={contactIconStyle} />
                             <div>
                                 <h3>Email</h3>
-                                <p style={contactItemTextStyle}>your.email@example.com</p>
+                                <p style={contactItemTextStyle}>aryakurdo@gmail.com</p>
                             </div>
                         </div>
                         <div className={styles.contactItem}>
-                            <Phone className={styles.contactIcon} style={contactIconStyle} />
+                            <Phone width="30" height="30" viewBox="-2 -2 28 28" className={styles.contactIcon} style={contactIconStyle} />
                             <div>
                                 <h3>Phone</h3>
-                                <p style={contactItemTextStyle}>+1 (123) 456-7890</p>
+                                <p style={contactItemTextStyle}>+964 (770) 152-4722</p>
                             </div>
                         </div>
                         <div className={styles.contactItem}>
-                            <MapPin className={styles.contactIcon} style={contactIconStyle} />
+                            <MapPin width="30" height="30" viewBox="-2 -2 28 28" className={styles.contactIcon} style={contactIconStyle} />
                             <div>
                                 <h3>Location</h3>
-                                <p style={contactItemTextStyle}>San Francisco, CA</p>
+                                <p style={contactItemTextStyle}>Kurdistan, Suli, Farmanbaran, 154, 24</p>
                             </div>
                         </div>
                     </div>
