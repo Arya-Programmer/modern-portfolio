@@ -1,48 +1,26 @@
-import { useContext } from "react"
+import { useContext, useState, useEffect } from "react"
+
+import { getExperiences } from '@/api/experiences';
 
 import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Experiences.module.css"
 
+type Experience = {
+    company: string;
+    role: string;
+    period: string;
+    description: string;
+    logo: string;
+}
+
 export default function Experiences() {
     const { colors } = useContext(ThemeContext)
+    const [experiences, setExperiences] = useState<Experience[]>();
 
-    const experiences = [
-        {
-            company: "2025 - Summer - Internship",
-            role: "Fullstack Developer - Internship",
-            period: "2025 - Spring",
-            description: "Built a website to show different economic data of Iraq",
-            logo: "/AUISLogo.png",
-        },
-        {
-            company: "2025 - Spring - Internship",
-            role: "IT Helpdesk - Internship",
-            period: "2025 - Spring",
-            description: "Taking a break from development world, helped in constant maintenance of IT Assets and Labs",
-            logo: "/AUISLogo.png",
-        },
-        {
-            company: "KurdsatTV",
-            role: "Fullstack Developer - Internship",
-            period: "2024 - Summer",
-            description: "Rebuilding their main website, making it more feature rich and user friendly",
-            logo: "/KurdsatLogo.jpg",
-        },
-        {
-            company: "Arya Stationery",
-            role: "Frontend Developer/Designer",
-            period: "2023 - Present",
-            description: "Created my own stationery, designed Textbooks for Teachers, and Applications to help 12th grade students",
-            logo: "/AryaStationeryLogo.jpg",
-        },
-        {
-            company: "Nova",
-            role: "Junior Backend Developer",
-            period: "2022 - 2023",
-            description: "Started my carrier by building Applications and Web solutions",
-            logo: "/NovaLogo.jpg",
-        },
-    ]
+    useEffect(() => {
+        getExperiences().then(setExperiences).catch(console.error);
+    }, [])
+
 
     const sectionStyle = {
         backgroundColor: colors.backgroundAlt,
@@ -80,7 +58,7 @@ export default function Experiences() {
                     <span className={styles.titleAfter} style={titleAfterStyle}></span>
                 </h2>
                 <div className={styles.timeline}>
-                    {experiences.map((exp, index) => (
+                    {experiences?.slice().reverse().map((exp: any, index: number) => (
                         <div key={index} className={styles.timelineItem}>
                             <div >
                                 <img className={styles.logoContainer} style={logoContainerStyle} src={exp.logo || "/placeholder.svg"} alt={`${exp.company} logo`} />

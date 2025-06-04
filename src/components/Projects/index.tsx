@@ -1,39 +1,55 @@
-import { useContext } from "react"
+import { useContext, useState, useEffect } from "react"
 
 import { ExternalLink, Github } from "lucide-react"
+
+import { getProjects } from '@/api/projects';
 
 import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Projects.module.css"
 
+type Project = {
+    title: string;
+    description: string;
+    image: string;
+    tags: string[];
+    liveUrl: string;
+    githubUrl: string;
+}
+
 export default function Projects() {
     const { colors } = useContext(ThemeContext)
+    const [projects, setProjects] = useState<Project[]>();
 
-    const projects = [
-        {
-            title: "E-commerce Website",
-            description: "A fully responsive e-commerce platform built with React and Node.js.",
-            image: "https://via.placeholder.com/500x300",
-            tags: ["React", "Node.js", "MongoDB", "Express"],
-            liveLink: "#",
-            githubLink: "#",
-        },
-        {
-            title: "Task Management App",
-            description: "A drag-and-drop task management application with user authentication.",
-            image: "https://via.placeholder.com/500x300",
-            tags: ["React", "Firebase", "Tailwind CSS"],
-            liveLink: "#",
-            githubLink: "#",
-        },
-        {
-            title: "Weather Dashboard",
-            description: "A weather application that displays current and forecasted weather data.",
-            image: "https://via.placeholder.com/500x300",
-            tags: ["JavaScript", "API", "CSS"],
-            liveLink: "#",
-            githubLink: "#",
-        },
-    ]
+    useEffect(() => {
+        getProjects().then(setProjects).catch(console.error);
+    }, [])
+
+    // const projects = [
+    //     {
+    //         title: "E-commerce Website",
+    //         description: "A fully responsive e-commerce platform built with React and Node.js.",
+    //         image: "https://via.placeholder.com/500x300",
+    //         tags: ["React", "Node.js", "MongoDB", "Express"],
+    //         liveLink: "#",
+    //         githubLink: "#",
+    //     },
+    //     {
+    //         title: "Task Management App",
+    //         description: "A drag-and-drop task management application with user authentication.",
+    //         image: "https://via.placeholder.com/500x300",
+    //         tags: ["React", "Firebase", "Tailwind CSS"],
+    //         liveLink: "#",
+    //         githubLink: "#",
+    //     },
+    //     {
+    //         title: "Weather Dashboard",
+    //         description: "A weather application that displays current and forecasted weather data.",
+    //         image: "https://via.placeholder.com/500x300",
+    //         tags: ["JavaScript", "API", "CSS"],
+    //         liveLink: "#",
+    //         githubLink: "#",
+    //     },
+    // ]
 
     const sectionStyle = {
         backgroundColor: colors.backgroundAlt,
@@ -78,7 +94,7 @@ export default function Projects() {
                     <span className={styles.titleAfter} style={titleAfterStyle}></span>
                 </h2>
                 <div className={styles.projectsGrid}>
-                    {projects.map((project, index) => (
+                    {projects?.map((project, index) => (
                         <div
                             key={index}
                             className={styles.projectCard}
@@ -107,9 +123,9 @@ export default function Projects() {
                                         </span>
                                     ))}
                                 </div>
-                                <div className={styles.projectLinks}>
+                                <div className={styles.projectLink}>
                                     <a
-                                        href={project.liveLink}
+                                        href={project.liveUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className={styles.projectLink}
@@ -125,7 +141,7 @@ export default function Projects() {
                                         <span>Live Demo</span>
                                     </a>
                                     <a
-                                        href={project.githubLink}
+                                        href={project.githubUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className={styles.projectLink}

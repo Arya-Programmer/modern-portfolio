@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, type ReactNode } from "react"
-import { lightTheme, darkTheme, type ThemeColors } from "../styles/colors"
+import type { ThemeColors } from "../styles/colors"
+import axios from "axios"
 
 type ThemeType = "light" | "dark"
 
@@ -11,7 +12,7 @@ interface ThemeContextType {
 
 export const ThemeContext = createContext<ThemeContextType>({
     theme: "light",
-    colors: lightTheme,
+    colors: { background: "#fff", text: "#000" } as ThemeColors,
     setTheme: () => { },
 })
 
@@ -21,20 +22,41 @@ interface ThemeProviderProps {
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     const [theme, setTheme] = useState<ThemeType>("light")
-    const [colors, setColors] = useState<ThemeColors>(lightTheme)
+    const [themes, setThemes] = useState<Record<ThemeType, ThemeColors>>({
+        light: { background: "#fff", text: "#000" } as ThemeColors,
+        dark: { background: "#000", text: "#fff" } as ThemeColors,
+    })
 
     useEffect(() => {
-        const storedTheme = localStorage.getItem("theme") as ThemeType | null
-        if (storedTheme) {
-            setTheme(storedTheme)
-            setColors(storedTheme === "dark" ? darkTheme : lightTheme)
-        }
-    }, [])
+        axios.get("http://localhost:8000/api/styles/")
+            .then(res => {
+                const fetchedThemes = res.data.reduce((acc: any, item: any) => {
+                    if (item.name === "light" || item.name === "dark") {
+                        acc[item.name] = item.data;
+                    }
+                    return acc;
+                }, {} as Record<ThemeType, ThemeColors>);
+                setThemes(fetchedThemes);
+
+                // apply stored theme if available
+                const storedTheme = localStorage.getItem("theme") as ThemeType | null;
+                const activeTheme = storedTheme && fetchedThemes[storedTheme] ? storedTheme : "light";
+                setTheme(activeTheme);
+            })
+            .catch(err => {
+                console.error("Failed to fetch themes from API:", err);
+            });
+    }, []);
 
     useEffect(() => {
         localStorage.setItem("theme", theme)
-        setColors(theme === "dark" ? darkTheme : lightTheme)
     }, [theme])
 
-    return <ThemeContext.Provider value={{ theme, colors, setTheme }}>{children}</ThemeContext.Provider>
+    const currentColors = themes[theme] || themes.light;
+
+    return (
+        <ThemeContext.Provider value={{ theme, colors: currentColors, setTheme }}>
+            {children}
+        </ThemeContext.Provider>
+    )
 }
