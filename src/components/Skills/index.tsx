@@ -1,29 +1,32 @@
-import { useContext } from "react"
+import { useContext, useState, useEffect } from "react"
 
 import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Skills.module.css"
+import { getAbout } from "@/api/about";
+
+type Skill = {
+    id: number;
+    name: string;
+}
+
+type About = {
+    name: string;
+    occupation: string;
+    bio: string;
+    self_portrait: string;
+    email: string;
+    phone: string;
+    location: string;
+    skills: Skill[];
+}
 
 export default function Skills() {
     const { colors } = useContext(ThemeContext)
+    const [about, setAbout] = useState<About>();
 
-    const skills = [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "TypeScript",
-        "React",
-        "Redux",
-        "Node.js",
-        "Git",
-        "Tailwind CSS",
-        "MongoDB",
-        "GraphQL",
-        "REST API",
-        "Figma",
-        "UI/UX Design",
-        "Responsive Design",
-        "Testing",
-    ]
+    useEffect(() => {
+        getAbout().then(data => { setAbout(data[0]); console.log(data) }).catch(console.error);
+    }, [])
 
     const sectionStyle = {
         backgroundColor: colors.background,
@@ -52,9 +55,9 @@ export default function Skills() {
                     <span className={styles.titleAfter} style={titleAfterStyle}></span>
                 </h2>
                 <div className={styles.skillsGrid}>
-                    {skills.map((skill) => (
+                    {about?.skills.map(skill => (
                         <div
-                            key={skill}
+                            key={skill.id}
                             className={styles.skillChip}
                             style={skillChipStyle}
                             onMouseOver={(e) => {
@@ -66,7 +69,7 @@ export default function Skills() {
                                 e.currentTarget.style.transform = "translateY(0)"
                             }}
                         >
-                            {skill}
+                            {skill.name}
                         </div>
                     ))}
                 </div>
