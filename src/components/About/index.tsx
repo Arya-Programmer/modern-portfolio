@@ -1,10 +1,26 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 
 import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./About.module.css"
+import { getAbout } from "@/api/about";
 
+type About = {
+    name: string;
+    occupation: string;
+    bio: string;
+    description: string;
+    self_portrait: string;
+    email: string;
+    phone: string;
+    location: string;
+}
 export default function About() {
     const { colors } = useContext(ThemeContext)
+    const [about, setAbout] = useState<About>();
+
+    useEffect(() => {
+        getAbout().then(data => setAbout(data[0])).catch(console.error);
+    }, [])
 
     const sectionStyle = {
         backgroundColor: colors.background,
@@ -17,6 +33,7 @@ export default function About() {
 
     const textStyle = {
         color: colors.textDimmed,
+        whiteSpace: "break-spaces"
     }
 
     return (
@@ -29,13 +46,7 @@ export default function About() {
                 <div className={styles.content}>
                     <div className={styles.text}>
                         <p style={textStyle}>
-                            I'm a full-stack developer with a strong focus on backend systems.
-                            I build scalable, efficient server-side applications and clean, well-documented APIs.
-                            On the frontend, I use React and TypeScript to create responsive, accessible interfaces.
-                        </p>
-                        <p style={textStyle}>
-                            When I'm not coding, you can find me exploring new hiking trails, reading science fiction, or
-                            experimenting with new recipes in the kitchen.
+                            {about?.description}
                         </p>
                     </div>
                 </div>

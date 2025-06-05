@@ -11,6 +11,7 @@ type About = {
     name: string;
     occupation: string;
     bio: string;
+    description: string;
     self_portrait: string;
     email: string;
     phone: string;

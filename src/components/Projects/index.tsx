@@ -7,11 +7,16 @@ import { getProjects } from '@/api/projects';
 import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Projects.module.css"
 
+type Tag = {
+    id: number;
+    name: string;
+}
+
 type Project = {
     title: string;
     description: string;
     image: string;
-    tags: string[];
+    tags: Tag[];
     liveUrl: string;
     githubUrl: string;
 }
@@ -119,7 +124,7 @@ export default function Projects() {
                                 <div className={styles.projectTags}>
                                     {project.tags.map((tag, tagIndex) => (
                                         <span key={tagIndex} className={styles.tag} style={tagStyle}>
-                                            {tag}
+                                            {tag.name}
                                         </span>
                                     ))}
                                 </div>

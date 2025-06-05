@@ -25,7 +25,7 @@ const socialMediaIcons: Record<string, ReactElement> = {
 export default function Footer() {
     const { colors } = useContext(ThemeContext)
     const currentYear = new Date().getFullYear()
-    const [social, setSocial] = useState<Social>();
+    const [social, setSocial] = useState<Social[]>();
 
     useEffect(() => {
         getSocial().then(setSocial).catch(console.error);
@@ -49,6 +49,7 @@ export default function Footer() {
         color: colors.textMuted,
     }
 
+    console.log(social);
     return (
         <footer className={styles.footer} style={footerStyle}>
             <div className={styles.container}>
@@ -69,12 +70,12 @@ export default function Footer() {
                                 e.currentTarget.style.transform = "translateY(0)"
                             }}
                         >
-                            {socialMediaIcons[data.name]}
+                            {socialMediaIcons[data.name.toLowerCase()]}
                         </a>
                     )}
                 </div>
                 <p className={styles.copyright} style={copyrightStyle}>
-                    &copy; {currentYear} {about?.name}. All rights reserved.
+                    &copy; {currentYear} All rights reserved.
                 </p>
             </div>
         </footer>
