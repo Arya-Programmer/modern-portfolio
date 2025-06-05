@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.Python
+
+# Virtual environment
+venv/
+Scripts/
+Include/
+Lib/
+ENV/
+env/
+.venv/
+env.bak/
+venv.bak/
+
+# Django
+*.log
+*.pot
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Migrations
+**/migrations/
+**/migrations/*.py
+**/migrations/*.pyc
+**/migrations/__pycache__/
+
+# dotenv
+.env
+.env.*
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Build and dist
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Testing
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+.cache/
+coverage.xml
+htmlcov/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+
+# Celery
+celerybeat-schedule
+
+# Pipenv
+Pipfile.lock
