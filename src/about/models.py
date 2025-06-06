@@ -14,6 +14,7 @@ class About(models.Model):
     name = models.CharField(max_length=50)
     occupation = models.CharField(max_length=100)
     bio = models.CharField(max_length=255)
+    description = models.TextField()
     self_portrait = models.ImageField(
         upload_to="project_images/", blank=True, null=True
     )

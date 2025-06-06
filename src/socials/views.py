@@ -6,5 +6,5 @@ from .serializers import SocialSerializer
 
 
 class SocialViewSet(viewsets.ModelViewSet):
-    queryset = Social.objects.prefetch_related("skills").all()
+    queryset = Social.objects.all()
     serializer_class = SocialSerializer

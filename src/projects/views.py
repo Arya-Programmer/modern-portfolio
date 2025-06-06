@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Project, Tag
 from .serializers import ProjectSerializer, TagSerializer
@@ -12,5 +11,5 @@ class TagViewSet(viewsets.ModelViewSet):
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.prefetch_related("skills").all()
+    queryset = Project.objects.prefetch_related("tags").all()
     serializer_class = ProjectSerializer
