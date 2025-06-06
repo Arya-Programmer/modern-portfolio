@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, type ReactNode } from "react"
 import type { ThemeColors } from "../styles/colors"
 import axios from "axios"
+import { BASE_URL } from "@/api"
 
 type ThemeType = "light" | "dark"
 
@@ -28,7 +29,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     })
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/styles/")
+        axios.get(BASE_URL + "/api/styles/")
             .then(res => {
                 const fetchedThemes = res.data.reduce((acc: any, item: any) => {
                     if (item.name === "light" || item.name === "dark") {
