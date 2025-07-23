@@ -103,7 +103,7 @@ export default function Hero() {
                         </div>
                     </div>
                     <div className={styles.imageWrapper} style={profileImageWrapperStyle}>
-                        <img className={styles.profileImage} src={about?.self_portrait} />
+                        <img className={styles.profileImage} src={about?.self_portrait.split("/").pop()} />
                     </div>
                 </div>
                 <button

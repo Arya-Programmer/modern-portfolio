@@ -61,7 +61,7 @@ export default function Experiences() {
                     {experiences?.slice().reverse().map((exp: any, index: number) => (
                         <div key={index} className={styles.timelineItem}>
                             <div >
-                                <img className={styles.logoContainer} style={logoContainerStyle} src={exp.logo || "/placeholder.svg"} alt={`${exp.company} logo`} />
+                                <img className={styles.logoContainer} style={logoContainerStyle} src={exp.logo.split("/").pop() || "/placeholder.svg"} alt={`${exp.company} logo`} />
                             </div>
                             <div className={styles.content} style={contentStyle}>
                                 <h3 className={styles.role}>{exp.role}</h3>
