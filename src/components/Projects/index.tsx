@@ -114,7 +114,7 @@ export default function Projects() {
                             }}
                         >
                             <div className={styles.projectImage}>
-                                <img src={project.image || "/placeholder.svg"} alt={project.title} />
+                                <img src={project.image.split("/").pop() || "/placeholder.svg"} alt={project.title} />
                             </div>
                             <div className={styles.projectContent}>
                                 <h3 className={styles.projectTitle}>{project.title}</h3>
