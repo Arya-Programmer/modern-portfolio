@@ -1,32 +1,34 @@
 import { useContext, useState, useEffect } from "react"
 
 import { ThemeContext } from "@/context/ThemeContext"
+
 import styles from "./Skills.module.css"
-import { getAbout } from "@/api/about";
 
 type Skill = {
     id: number;
     name: string;
 }
 
-type About = {
-    name: string;
-    occupation: string;
-    bio: string;
-    self_portrait: string;
-    email: string;
-    phone: string;
-    location: string;
-    skills: Skill[];
-}
-
 export default function Skills() {
     const { colors } = useContext(ThemeContext)
-    const [about, setAbout] = useState<About>();
-
-    useEffect(() => {
-        getAbout().then(data => { setAbout(data[0]); console.log(data) }).catch(console.error);
-    }, [])
+    const skills = [
+        { id: 1, name: "HTML/CSS" },
+        { id: 2, name: "JavaScript/NodeJs" },
+        { id: 3, name: "TypeScript" },
+        { id: 4, name: "React" },
+        { id: 5, name: "Git/Github" },
+        { id: 6, name: "MongoDB" },
+        { id: 7, name: "SQL" },
+        { id: 8, name: "Django/DjangoREST" },
+        { id: 9, name: "Figma" },
+        { id: 10, name: "Java" },
+        { id: 11, name: "NextJs" },
+        { id: 12, name: "Flutter" },
+        { id: 13, name: "Photoshop" },
+        { id: 14, name: "Illustrator" },
+        { id: 15, name: "100 WPM" },
+        { id: 16, name: "CCNA" },
+    ]
 
     const sectionStyle = {
         backgroundColor: colors.background,
@@ -55,7 +57,7 @@ export default function Skills() {
                     <span className={styles.titleAfter} style={titleAfterStyle}></span>
                 </h2>
                 <div className={styles.skillsGrid}>
-                    {about?.skills.map(skill => (
+                    {skills.map(skill => (
                         <div
                             key={skill.id}
                             className={styles.skillChip}

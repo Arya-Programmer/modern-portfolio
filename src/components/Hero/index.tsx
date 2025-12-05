@@ -2,30 +2,11 @@ import { useContext, useState, useEffect } from "react"
 
 import { ArrowDown } from "lucide-react"
 
-import { getAbout } from "@/api/about"
-
 import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Hero.module.css"
 
-type About = {
-    name: string;
-    occupation: string;
-    bio: string;
-    description: string;
-    self_portrait: string;
-    email: string;
-    phone: string;
-    location: string;
-}
-
 export default function Hero() {
     const { colors } = useContext(ThemeContext)
-    const [about, setAbout] = useState<About>();
-
-    useEffect(() => {
-        getAbout().then(data => setAbout(data[0])).catch(console.error);
-    }, [])
-
 
     const scrollToSection = (sectionId: string) => {
         const section = document.getElementById(sectionId)
@@ -74,11 +55,11 @@ export default function Hero() {
                         <h1 className={styles.title}>
                             Hi, I'm{" "}
                             <span className={styles.highlight} style={highlightStyle}>
-                                {about?.name}
+                            Arya Kurdo
                             </span>
                         </h1>
-                        <h2 className={styles.subtitle}>{about?.occupation}</h2>
-                        <p className={styles.description}>{about?.bio}</p>
+                        <h2 className={styles.subtitle}>Software Engineer</h2>
+                        <p className={styles.description}>I build exceptional and accessible digital experiences across platforms.</p>
                         <div className={styles.actions}>
                             <button
                                 className={styles.primaryButton}
@@ -103,7 +84,7 @@ export default function Hero() {
                         </div>
                     </div>
                     <div className={styles.imageWrapper} style={profileImageWrapperStyle}>
-                        <img className={styles.profileImage} src={about?.self_portrait.split("/").pop()} />
+                        <img className={styles.profileImage} src={"/snapshot.jpg"} />
                     </div>
                 </div>
                 <button

@@ -11,9 +11,31 @@ interface ThemeContextType {
     setTheme: (theme: ThemeType) => void
 }
 
+const FALLBACK_THEME: ThemeColors = {
+    background: "#ffffff",
+    backgroundAlt: "#f9f9f9",
+    backgroundElevated: "#f0f0f0",
+    border: "#e0e0e0",
+    card: "#ffffff",
+    chip: "#f0f0f0",
+    formBackground: "#f9f9f9",
+    formBorder: "#e0e0e0",
+    icon: "#0070f3",
+    primary: "#0060df",
+    primaryHover: "#0060df",
+    shadow: "rgba(0, 0, 0, 0.1)",
+    shadowHover: "rgba(0, 0, 0, 0.15)",
+    tag: "#f0f0f0",
+    tagText: "#555555",
+    text: "#333333",
+    textDimmed: "#555555",
+    textMuted: "#666666",
+    timeline: "#e0e0e0"
+} as ThemeColors; // Ensure this matches your imported type definition
+
 export const ThemeContext = createContext<ThemeContextType>({
     theme: "light",
-    colors: { background: "#fff", text: "#000" } as ThemeColors,
+    colors: FALLBACK_THEME,
     setTheme: () => { },
 })
 
@@ -22,10 +44,17 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-    const [theme, setTheme] = useState<ThemeType>("light")
+    const [theme, setTheme] = useState<ThemeType>(() => {
+        if (typeof window !== "undefined") {
+            const stored = localStorage.getItem("theme") as ThemeType | null;
+            return stored === "light" || stored === "dark" ? stored : "light";
+        }
+        return "light";
+    });
+
     const [themes, setThemes] = useState<Record<ThemeType, ThemeColors>>({
-        light: { background: "#fff", text: "#000" } as ThemeColors,
-        dark: { background: "#000", text: "#fff" } as ThemeColors,
+        light: FALLBACK_THEME,
+        dark: FALLBACK_THEME, 
     })
 
     useEffect(() => {
@@ -37,15 +66,11 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
                     }
                     return acc;
                 }, {} as Record<ThemeType, ThemeColors>);
-                setThemes(fetchedThemes);
 
-                // apply stored theme if available
-                const storedTheme = localStorage.getItem("theme") as ThemeType | null;
-                const activeTheme = storedTheme && fetchedThemes[storedTheme] ? storedTheme : "light";
-                setTheme(activeTheme);
+                setThemes(prev => ({ ...prev, ...fetchedThemes }));
             })
             .catch(err => {
-                console.error("Failed to fetch themes from API:", err);
+                console.error("Failed to fetch themes from API, using fallback:", err);
             });
     }, []);
 

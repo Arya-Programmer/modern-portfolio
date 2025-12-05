@@ -2,15 +2,8 @@ import { useContext, useEffect, useState, ReactElement } from "react"
 
 import { Github, Linkedin, Twitter, PenTool, Instagram, Facebook, Send } from "lucide-react"
 
-import { getSocial } from "@/api/social"
-
 import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Footer.module.css"
-
-type Social = {
-    name: string;
-    link: string;
-}
 
 const socialMediaIcons: Record<string, ReactElement> = {
     twitter: <Twitter size={20} />,
@@ -25,11 +18,9 @@ const socialMediaIcons: Record<string, ReactElement> = {
 export default function Footer() {
     const { colors } = useContext(ThemeContext)
     const currentYear = new Date().getFullYear()
-    const [social, setSocial] = useState<Social[]>();
-
-    useEffect(() => {
-        getSocial().then(setSocial).catch(console.error);
-    }, [])
+    const socials = [
+        { name: "github", link: "https://github.com/Arya-Programmer" },
+    ]
 
     const footerStyle = {
         backgroundColor: colors.backgroundAlt,
@@ -49,12 +40,11 @@ export default function Footer() {
         color: colors.textMuted,
     }
 
-    console.log(social);
     return (
         <footer className={styles.footer} style={footerStyle}>
             <div className={styles.container}>
                 <div className={styles.social}>
-                    {social?.map(data =>
+                    {socials?.map(data =>
                         <a
                             href={data.link}
                             target="_blank"

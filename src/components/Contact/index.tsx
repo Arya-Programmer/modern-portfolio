@@ -2,36 +2,17 @@ import { useState, useContext, type ChangeEvent, type FormEvent, useEffect } fro
 
 import { Mail, Phone, MapPin, Send } from "lucide-react"
 
-import { getAbout } from "@/api/about"
-
 import { ThemeContext } from "@/context/ThemeContext"
 import styles from "./Contact.module.css"
 
-type About = {
-    name: string;
-    occupation: string;
-    bio: string;
-    self_portrait: string;
-    email: string;
-    phone: string;
-    location: string;
-    skills: string[];
-}
-
 export default function Contact() {
     const { colors } = useContext(ThemeContext)
-    const [about, setAbout] = useState<About>();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         subject: "",
         message: "",
     })
-
-
-    useEffect(() => {
-        getAbout().then(data => setAbout(data[0])).catch(console.error)
-    }, []);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target
@@ -40,7 +21,7 @@ export default function Contact() {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-        console.log("Form submitted:", formData)
+        // TODO: Submit the data to telegram or something
 
         alert("Thanks for your message! I'll get back to you soon.")
         setFormData({
@@ -102,21 +83,21 @@ export default function Contact() {
                             <Mail width="30" height="30" viewBox="-2 -2 28 28" className={styles.contactIcon} style={contactIconStyle} />
                             <div>
                                 <h3>Email</h3>
-                                <p style={contactItemTextStyle}>{about?.email}</p>
+                                <p style={contactItemTextStyle}>aryakurdo@gmail.com</p>
                             </div>
                         </div>
                         <div className={styles.contactItem}>
                             <Phone width="30" height="30" viewBox="-2 -2 28 28" className={styles.contactIcon} style={contactIconStyle} />
                             <div>
                                 <h3>Phone</h3>
-                                <p style={contactItemTextStyle}>{about?.phone}</p>
+                                <p style={contactItemTextStyle}>+964 772 152 4722</p>
                             </div>
                         </div>
                         <div className={styles.contactItem}>
                             <MapPin width="30" height="30" viewBox="-2 -2 28 28" className={styles.contactIcon} style={contactIconStyle} />
                             <div>
                                 <h3>Location</h3>
-                                <p style={contactItemTextStyle}>{about?.location}</p>
+                                <p style={contactItemTextStyle}>Kurdistan, Sulaymaniyah</p>
                             </div>
                         </div>
                     </div>
