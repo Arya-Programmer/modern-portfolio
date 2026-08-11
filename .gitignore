@@ -9,6 +9,12 @@ node_modules
 bower_components
 .env
 
+# build output
+/build
+
+# machine-local Claude Code settings
+.claude/settings.local.json
+
 *.sublime*
 
 psd
