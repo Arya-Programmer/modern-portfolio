@@ -47,6 +47,7 @@ test("renders a brand logo for each social link on the links page", () => {
     )
 
     const optionalLabels = [
+        ["Fragrantica", profileLinks.fragrantica],
         ["Letterboxd", profileLinks.letterboxd],
         ["Spotify", profileLinks.spotify],
     ] as const

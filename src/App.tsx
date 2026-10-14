@@ -518,6 +518,7 @@ function LinksPage({ theme, onToggleTheme }: { theme: Theme; onToggleTheme: () =
             label: "Fragrantica",
             handle: "My fragrance profile",
             shortLabel: "FR",
+            icon: "fragrantica" as BrandIconId,
             href: profileLinks.fragrantica,
         },
         {
