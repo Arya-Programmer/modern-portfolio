@@ -78,6 +78,7 @@ export const profileLinks = {
     email: "mailto:aryakurdo@gmail.com",
     // Add the exact public profile URLs here. Empty values are not rendered,
     // so the site never sends visitors to a guessed personal profile.
+    fragrantica: "https://www.fragrantica.com/@arya_kurdo",
     letterboxd: "https://letterboxd.com/arya_kurdo/",
     spotify: "",
 }

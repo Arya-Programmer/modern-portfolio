@@ -17,7 +17,7 @@ test("identifies Arya as a backend engineer with Rust as the primary language", 
 })
 
 test("renders the standalone links route", () => {
-    render(
+    const { container } = render(
         <MemoryRouter initialEntries={["/links"]}>
             <App />
         </MemoryRouter>,
@@ -28,6 +28,15 @@ test("renders the standalone links route", () => {
         "href",
         "https://www.instagram.com/arya_kurdo/",
     )
+
+    const renderedProfileLinks = Array.from(
+        container.querySelectorAll<HTMLAnchorElement>(".link-stack .profile-link"),
+    )
+    expect(renderedProfileLinks.slice(0, 2).map(link => link.textContent)).toEqual([
+        expect.stringMatching(/Fragrantica/i),
+        expect.stringMatching(/Letterboxd/i),
+    ])
+    expect(renderedProfileLinks[0]).toHaveAttribute("href", "https://www.fragrantica.com/@arya_kurdo")
 })
 
 test("renders a brand logo for each social link on the links page", () => {

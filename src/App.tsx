@@ -507,19 +507,31 @@ function ProfileLinkIcon({ icon, shortLabel }: { icon?: BrandIconId; shortLabel:
 }
 
 function LinksPage({ theme, onToggleTheme }: { theme: Theme; onToggleTheme: () => void }) {
-    const optionalProfiles = [
+    const optionalProfiles: Array<{
+        label: string
+        handle: string
+        shortLabel: string
+        icon?: BrandIconId
+        href: string
+    }> = [
+        {
+            label: "Fragrantica",
+            handle: "My fragrance profile",
+            shortLabel: "FR",
+            href: profileLinks.fragrantica,
+        },
         {
             label: "Letterboxd",
             handle: "Films and reviews",
             shortLabel: "LB",
-            icon: "letterboxd" as const,
+            icon: "letterboxd" as BrandIconId,
             href: profileLinks.letterboxd,
         },
         {
             label: "Spotify",
             handle: "What I listen to",
             shortLabel: "SP",
-            icon: "spotify" as const,
+            icon: "spotify" as BrandIconId,
             href: profileLinks.spotify,
         },
     ].filter(profile => Boolean(profile.href))
@@ -544,6 +556,23 @@ function LinksPage({ theme, onToggleTheme }: { theme: Theme; onToggleTheme: () =
                 </section>
 
                 <div className="link-stack">
+                    {optionalProfiles.slice(0, 2).map(profile => (
+                        <a
+                            className="profile-link"
+                            href={profile.href}
+                            key={profile.label}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <ProfileLinkIcon icon={profile.icon} shortLabel={profile.shortLabel} />
+                            <span>
+                                <strong>{profile.label}</strong>
+                                <small>{profile.handle}</small>
+                            </span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    ))}
+
                     <Link className="profile-link profile-link-featured" to="/">
                         <span className="profile-link-icon">AK</span>
                         <span>
@@ -564,7 +593,7 @@ function LinksPage({ theme, onToggleTheme }: { theme: Theme; onToggleTheme: () =
                         </a>
                     ))}
 
-                    {optionalProfiles.map(profile => (
+                    {optionalProfiles.slice(2).map(profile => (
                         <a
                             className="profile-link"
                             href={profile.href}
